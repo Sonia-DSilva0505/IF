@@ -9,7 +9,8 @@ import 'package:internship_fair/view/login.dart';
 import 'widgets/job_card.dart';
 
 class JobProfile extends StatefulWidget {
-  const JobProfile({Key? key}) : super(key: key);
+  
+  const JobProfile({super.key});
 
   @override
   State<JobProfile> createState() => _JobProfileState();
@@ -49,7 +50,7 @@ class _JobProfileState extends State<JobProfile> {
     double sizefont = size.width * 0.04;
 
     return Scaffold(
-        appBar: AppBar(
+        appBar: AppBar(foregroundColor: Colors.white,shadowColor: Colors.white,
           leading: IconButton(
               onPressed: () {
                 showModalBottomSheet(

@@ -18,6 +18,7 @@ class JobDesc extends StatefulWidget {
       deadline;
   final List<String> requirements;
   final int? v;
+  final bool applied;
 
   final String jobid;
   const JobDesc(
@@ -32,6 +33,7 @@ class JobDesc extends StatefulWidget {
       required this.location,
       required this.requirements,
       required this.deadline,
+      required this.applied,
       this.v,
       this.logo,
       required this.skills})
@@ -139,7 +141,6 @@ class _JobDescState extends State<JobDesc> {
         ).show(context);
       }
     }
-
 
     final jobDetails = Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -285,6 +286,7 @@ class _JobDescState extends State<JobDesc> {
       animationDuration: const Duration(milliseconds: 500),
       children: [
         ExpansionPanel(
+          backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
@@ -332,6 +334,7 @@ class _JobDescState extends State<JobDesc> {
       animationDuration: const Duration(milliseconds: 500),
       children: [
         ExpansionPanel(
+          backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
@@ -378,6 +381,7 @@ class _JobDescState extends State<JobDesc> {
       animationDuration: const Duration(milliseconds: 500),
       children: [
         ExpansionPanel(
+          backgroundColor: Colors.white,
           headerBuilder: (context, isExpanded) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
@@ -576,9 +580,9 @@ class _JobDescState extends State<JobDesc> {
                 SizedBox(
                   height: size.width * 0.05,
                 ),
-                (DateFormat("yyyy-MM-ddTHH:mm:ss.SSSZ")
+                ((DateFormat("yyyy-MM-ddTHH:mm:ss.SSSZ")
                             .parse(widget.deadline ?? ""))
-                        .isAfter(DateTime.now())
+                        .isAfter(DateTime.now()) && !widget.applied)
                     ? applyButton
                     : const SizedBox.shrink()
               ]),

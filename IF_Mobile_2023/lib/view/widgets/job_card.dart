@@ -300,7 +300,7 @@ class JobCard extends StatelessWidget {
                               logo: logo!,
                               location: location ?? "",
                               deadline: deadline ?? "",
-                              v: v ?? 0)));
+                              v: v ?? 0, applied: false,)));
                 },
               ),
             ],

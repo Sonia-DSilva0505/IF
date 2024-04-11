@@ -57,7 +57,7 @@ class AppliedJobCard extends StatelessWidget {
                       logo: logo!,
                       location: location ?? "",
                       deadline: deadline ?? "",
-                      v: v ?? 0)));
+                      v: v ?? 0, applied: true,)));
         },
         child: Padding(
           padding: const EdgeInsets.all(5),
