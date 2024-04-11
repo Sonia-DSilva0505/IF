@@ -140,58 +140,6 @@ class _JobDescState extends State<JobDesc> {
       }
     }
 
-    final jobPosn = Row(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.jobPosition ?? "",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: textgreen,
-                  fontFamily: "poppins",
-                  fontSize: sizefont * 1.5,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 0.003 * size.height,
-            ),
-            Text(
-              widget.companyName ?? "",
-              style: TextStyle(
-                color: blackColor,
-                fontFamily: "poppins",
-                fontSize: sizefont * 1.2,
-              ),
-            ),
-            SizedBox(
-              height: 0.003 * size.height,
-            ),
-            Text(
-              widget.location ?? "",
-              style: TextStyle(
-                color: darkgrey,
-                fontFamily: "poppins",
-                fontSize: sizefont,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(
-          width: size.width * 0.2,
-        ),
-        Container(
-          width: size.width * 0.1,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(widget.logo ?? ""),
-              fit: BoxFit.cover,
-            ),
-          ),
-        )
-      ],
-    );
 
     final jobDetails = Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -339,11 +287,11 @@ class _JobDescState extends State<JobDesc> {
         ExpansionPanel(
           headerBuilder: (context, isExpanded) {
             return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'About The Company',
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: ListTile(
+                tileColor: Colors.white,
+                title: Text(
+                  'About the Company',
                   style: TextStyle(
                     color: blackColor,
                     fontFamily: "poppins",
@@ -386,10 +334,9 @@ class _JobDescState extends State<JobDesc> {
         ExpansionPanel(
           headerBuilder: (context, isExpanded) {
             return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: ListTile(
+                title: Text(
                   'Job Description',
                   style: TextStyle(
                     color: blackColor,
@@ -459,14 +406,16 @@ class _JobDescState extends State<JobDesc> {
                       shape: BoxShape.circle,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(left: 8, bottom: 8),
-                    child: Text(
-                      e,
-                      style: TextStyle(
-                        color: blackColor,
-                        fontFamily: "poppins",
-                        fontSize: sizefont * 0.8,
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 8, bottom: 8),
+                      child: Text(
+                        e,
+                        style: TextStyle(
+                          color: blackColor,
+                          fontFamily: "poppins",
+                          fontSize: sizefont * 0.8,
+                        ),
                       ),
                     ),
                   ),
@@ -531,13 +480,89 @@ class _JobDescState extends State<JobDesc> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                jobPosn,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.jobPosition ?? "",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: textgreen,
+                              fontFamily: "poppins",
+                              fontSize: sizefont * 1.5,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 0.003 * size.height,
+                        ),
+                        Text(
+                          widget.companyName ?? "",
+                          style: TextStyle(
+                            color: blackColor,
+                            fontFamily: "poppins",
+                            fontSize: sizefont * 1.2,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 0.003 * size.height,
+                        ),
+                        Text(
+                          widget.location ?? "",
+                          style: TextStyle(
+                            color: darkgrey,
+                            fontFamily: "poppins",
+                            fontSize: sizefont,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: size.width * 0.1,
+                    ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(widget.logo ?? ""),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 SizedBox(
-                  height: size.width * 0.05,
+                  height: size.width * 0.01,
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      'Deadline: ',
+                      style: TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: Colors.grey),
+                    ),
+                    Text(
+                      DateFormat('MMM d, yyyy h:mm a')
+                          .format(DateTime.parse(widget.deadline ?? "")),
+                      style: const TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Colors.black),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: size.width * 0.03,
                 ),
                 jobDetails,
                 SizedBox(
-                  height: size.width * 0.05,
+                  height: size.width * 0.03,
                 ),
                 aboutComp,
                 SizedBox(

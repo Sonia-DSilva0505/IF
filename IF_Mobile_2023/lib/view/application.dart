@@ -39,7 +39,7 @@ class _MyCartState extends State<Application> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final double sizefont = size.width * 0.07;
+    final double sizefont = size.width * 0.06;
 
     return Scaffold(
       backgroundColor: Colors.grey[100],

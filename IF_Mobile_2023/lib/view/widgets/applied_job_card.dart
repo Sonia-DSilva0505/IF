@@ -59,15 +59,16 @@ class AppliedJobCard extends StatelessWidget {
                       deadline: deadline ?? "",
                       v: v ?? 0)));
         },
-        child: Card(
-          color: Colors.white,
-          elevation: 3,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: BorderSide(color: Colors.grey.shade400),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 10.0, top: 10),
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.black,
+                  width: 0.1,
+                ),
+                borderRadius: BorderRadius.circular(3),
+                color: Colors.white),
             child: ListTile(
               leading: CircleAvatar(
                 radius: 25,

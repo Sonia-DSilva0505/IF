@@ -72,7 +72,7 @@ class _JobProfileState extends State<JobProfile> {
                   ),
                 );
               },
-              icon: const Icon(Icons.filter_alt_sharp, color: Colors.teal)),
+              icon: const Icon(Icons.filter_alt_sharp, color: Color(0xFF009688))),
           elevation: 0,
           title: const Text(
             'All Opportunities',

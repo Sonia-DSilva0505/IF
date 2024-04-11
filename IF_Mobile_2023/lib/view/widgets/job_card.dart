@@ -83,7 +83,7 @@ class JobCard extends StatelessWidget {
             ],
           ),
           Text(
-            companyName!,
+            companyName ?? "",
             style: const TextStyle(
                 fontFamily: 'poppins',
                 fontWeight: FontWeight.w500,
@@ -91,7 +91,7 @@ class JobCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            location!,
+            location ?? "",
             style: const TextStyle(
                 fontFamily: 'poppins',
                 fontWeight: FontWeight.w400,
@@ -262,12 +262,10 @@ class JobCard extends StatelessWidget {
                         fontFamily: 'poppins',
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
-                        // color: Color(0xF2D3748),
                         color: Colors.black),
                   )),
             ],
           ),
-          // SizedBox(height: 10),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.01,
           ),

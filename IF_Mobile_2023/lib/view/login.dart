@@ -3,7 +3,7 @@ import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:internship_fair/controller/auth.dart';
 import 'package:internship_fair/constants/constants.dart';
 import 'package:internship_fair/view/job_profile.dart';
-import 'package:internship_fair/view/info.dart';
+import 'package:internship_fair/view/register.dart';
 import 'package:motion_toast/motion_toast.dart';
 
 class LoginScreen extends StatefulWidget {
