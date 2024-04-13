@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:internship_fair/constants/constants.dart';
 import 'package:internship_fair/controller/get_job.dart';
 import 'package:internship_fair/model/get_job_model.dart' as data;
-import 'package:internship_fair/view/application.dart';
+import 'package:internship_fair/view/profile.dart';
 import 'package:internship_fair/view/filter_page.dart';
-import 'package:internship_fair/view/login.dart';
 import 'widgets/job_card.dart';
 
 class JobProfile extends StatefulWidget {
@@ -88,23 +86,14 @@ class _JobProfileState extends State<JobProfile> {
             IconButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const Application();
+                  return const Profile();
                 }));
               },
               icon: Icon(
-                Icons.cases_outlined,
+                Icons.person_outlined,
                 color: blackTeal,
               ),
             ),
-            IconButton(
-                onPressed: () {
-                  GetStorage().erase();
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginScreen()));
-                },
-                icon: const Icon(Icons.logout, color: Colors.teal)),
           ],
         ),
         backgroundColor: Colors.grey[100],

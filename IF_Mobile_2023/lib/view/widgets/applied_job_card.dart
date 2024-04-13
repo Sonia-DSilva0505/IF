@@ -45,19 +45,21 @@ class AppliedJobCard extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => JobDesc(
-                      companyName: companyName ?? "",
-                      duration: duration ?? "",
-                      jobid: jobid ?? "",
-                      jobPosition: position ?? "",
-                      minStipend: stipend ?? "",
-                      workfromHome: mode ?? "",
-                      about: about ?? "",
-                      skills: skills,
-                      requirements: requirements ?? [],
-                      logo: logo!,
-                      location: location ?? "",
-                      deadline: deadline ?? "",
-                      v: v ?? 0, applied: true,)));
+                        companyName: companyName ?? "",
+                        duration: duration ?? "",
+                        jobid: jobid ?? "",
+                        jobPosition: position ?? "",
+                        minStipend: stipend ?? "",
+                        workfromHome: mode ?? "",
+                        about: about ?? "",
+                        skills: skills,
+                        requirements: requirements ?? [],
+                        logo: logo!,
+                        location: location ?? "",
+                        deadline: deadline ?? "",
+                        v: v ?? 0,
+                        applied: true,
+                      )));
         },
         child: Padding(
           padding: const EdgeInsets.all(5),
@@ -70,10 +72,17 @@ class AppliedJobCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(3),
                 color: Colors.white),
             child: ListTile(
-              leading: CircleAvatar(
-                radius: 25,
-                backgroundImage: NetworkImage(
+              leading: SizedBox(
+                width: 0.15 * size.width,
+                height: 0.15 * size.width,
+                child: Image.network(
                   logo ?? "",
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Center(
+                      child: Icon(Icons.error_outline, color: Colors.red),
+                    );
+                  },
                 ),
               ),
               title: Padding(

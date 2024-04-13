@@ -94,7 +94,7 @@ class _JobDescState extends State<JobDesc> {
           borderRadius: 10,
           padding: EdgeInsets.zero,
           title: Text(
-            "Already applied for Job",
+            "Already applied",
             style: TextStyle(
               fontFamily: "Poppins",
               color: Colors.black,
@@ -208,7 +208,7 @@ class _JobDescState extends State<JobDesc> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'MIN STIPEND',
+                    'STIPEND',
                     style: TextStyle(
                       color: darkgrey,
                       fontFamily: "poppins",
@@ -479,7 +479,7 @@ class _JobDescState extends State<JobDesc> {
               children: [
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
@@ -504,25 +504,17 @@ class _JobDescState extends State<JobDesc> {
                             fontSize: sizefont * 1.2,
                           ),
                         ),
-                        SizedBox(height: 0.003 * size.height),
-                        Text(
-                          widget.location ?? "",
-                          style: TextStyle(
-                            color: darkgrey,
-                            fontFamily: "poppins",
-                            fontSize: sizefont,
-                          ),
-                        ),
+                        
                       ],
                     ),
                     //SizedBox(width: 0.17 * size.width),
-                    Spacer(),
+                    const Spacer(),
                     SizedBox(
-                      width: 0.15 * size.width,
-                      height: 0.15 * size.width,
+                      width: 0.2 * size.width,
+                      height: 0.2 * size.width,
                       child: Image.network(
                         widget.logo ?? "",
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) {
                           return const Center(
                             child: Icon(Icons.error_outline, color: Colors.red),
@@ -532,6 +524,15 @@ class _JobDescState extends State<JobDesc> {
                     ),
                   ],
                 ),
+                SizedBox(height: 0.003 * size.height),
+                        Text(
+                          widget.location ?? "",
+                          style: TextStyle(
+                            color: darkgrey,
+                            fontFamily: "poppins",
+                            fontSize: sizefont,
+                          ),
+                        ),
                 SizedBox(
                   height: size.width * 0.01,
                 ),

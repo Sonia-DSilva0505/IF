@@ -774,22 +774,15 @@ class _InfoPageState extends State<InfoPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text("Already have an Account? ",
-                          style: TextStyle(
-                              fontFamily: 'poppins', fontSize: sizefont)),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text("Login Here",
-                            style: TextStyle(
-                                fontFamily: 'poppins',
-                                fontSize: sizefont,
-                                decoration: TextDecoration.underline)),
-                      ),
-                    ],
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Already have an Account? Login Here",
+                        style: TextStyle(
+                            fontFamily: 'poppins',
+                            fontSize: sizefont,
+                            decoration: TextDecoration.underline)),
                   ),
                   const SizedBox(
                     height: 30,

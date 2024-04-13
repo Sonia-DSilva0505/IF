@@ -23,6 +23,7 @@ class AuthController {
     }
 
     final response = jsonDecode(body);
+    print(response);
     init(response);
     return "Success";
   }
@@ -76,11 +77,43 @@ class AuthController {
     }
   }
 
+  Future<String> updateResume(
+    String userid,
+    File pdf,
+  ) async {
+    var request = http.MultipartRequest(
+      'POST',
+      Uri.parse("https://acm-if-backend.onrender.com/api/acm-if/update-resume/$userid"),
+    );
+    http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+      'resume',
+      pdf.path,
+      contentType: MediaType("application", "pdf"),
+    );
+    request.files.add(
+      multipartFile,
+    );
+    var res = await request.send();
+    var responseBody = await res.stream.bytesToString();
+    var response = jsonDecode(responseBody);
+    if (res.statusCode == 200) {
+      return "Success";
+    } else {
+      return response["message"];
+    }
+  }
+
   void init(res) async {
     try {
       final box = GetStorage();
       box.write('token', res['token']);
       box.write('id', res['data']['_id']);
+      box.write('name', res['data']['name']);
+      box.write('email', res['data']['email']);
+      box.write('sapid', res['data']['sap']);
+      box.write('contact', res['data']['contact']);
+      box.write('department', res['data']['department']);
+      box.write('resume', res['data']['resume']);
     } catch (e) {
       log(e.toString());
     }
