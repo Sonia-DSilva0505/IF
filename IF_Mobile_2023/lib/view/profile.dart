@@ -10,6 +10,7 @@ import 'package:internship_fair/model/get_job_model.dart' as data;
 import 'package:motion_toast/motion_toast.dart';
 import 'login.dart';
 import 'widgets/applied_job_card.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -150,8 +151,9 @@ class _ProfileState extends State<Profile> {
     String? contact = GetStorage().read("contact");
     String? dept = GetStorage().read("department");
     String? resume = GetStorage().read("resume");
+
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -165,129 +167,206 @@ class _ProfileState extends State<Profile> {
           style: TextStyle(
             fontFamily: 'Poppins',
             fontSize: sizefont,
-            fontWeight: FontWeight.normal,
-            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            color: Colors.teal,
           ),
           textAlign: TextAlign.start,
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(
+              horizontal: size.width * 0.058, vertical: size.height * 0.03),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                name ?? "",
+                name ?? "John Doe",
                 style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
+                  fontFamily: 'Poppins',
+                  fontSize: sizefont * 1.4,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
               ),
-              Text(
-                email?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
+              SizedBox(height: size.height * 0.02),
+              Row(
+                children: [
+                  Text(
+                    "SAP ID ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.9,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    sap ?? "",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.9,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                sap ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
+              // SizedBox(height: size.height * 0.03),
+              SizedBox(height: size.height * 0.01),
+              Row(
+                children: [
+                  Text(
+                    "Email ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.9,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    email ?? "",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.68,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                contact ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
+              SizedBox(height: size.height * 0.01),
+              Row(
+                children: [
+                  Text(
+                    "Mobile ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.9,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    contact ?? "",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.9,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                dept ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
+              SizedBox(height: size.height * 0.01),
+              Row(
+                children: [
+                  Text(
+                    "Department ",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.9,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    dept ?? "",
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: sizefont * 0.9,
+                      color: const Color.fromARGB(255, 97, 132, 129),
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                resume ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.loose,
-                      child: Text(
-                        'Update Resume',
-                        style: TextStyle(
-                            fontFamily: 'poppins',
-                            color: textgreen,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500),
+              SizedBox(height: size.height * 0.03),
+              Row(
+                children: [
+                  if (resume != null)
+                    SizedBox(
+                      width: size.width *
+                          0.5, // Set the width to 60% of the screen width
+                      child: OutlinedButton(
+                        onPressed: () async {
+                          final Uri pdfUrl = Uri.parse(resume!);
+                          if (!await launchUrl(pdfUrl)) {
+                            throw Exception('Could not launch $pdfUrl');
+                          }
+                        },
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor:
+                              const Color.fromARGB(255, 97, 132, 129),
+                          side: const BorderSide(
+                              color: Color.fromARGB(255, 78, 132, 126)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
+                        child: Text(
+                          "View Resume",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: sizefont * 0.7,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      width: 0.05 * size.width,
-                    ),
-                    fileName == null
-                        ? Flexible(
-                            flex: 1,
-                            fit: FlexFit.loose,
-                            child: SizedBox(
-                              width: size.width * 0.3,
-                              child: Material(
-                                borderRadius: BorderRadius.circular(5),
-                                color: whiteColor,
-                                child: MaterialButton(
-                                  onPressed: () {
-                                    selectPDF();
-                                  },
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        WidgetSpan(
-                                            child: Icon(
-                                          Icons.file_upload_outlined,
-                                          color: darkgrey,
-                                          size: sizefont * 0.9,
-                                        )),
-                                        WidgetSpan(
-                                            child: SizedBox(
-                                          width: size.width * 0.01,
-                                        )),
-                                        TextSpan(
-                                          text: "Add File",
-                                          style: TextStyle(
-                                              fontFamily: 'poppins',
-                                              fontSize: 14,
-                                              color: darkgrey),
-                                        ),
-                                      ],
+                  const Spacer(),
+                  fileName == null
+                      ? SizedBox(
+                          width: size.width * 0.3,
+                          height: size.height * 0.0556,
+                          child: Material(
+                            borderRadius: BorderRadius.circular(5),
+                            color: blackTeal,
+                            child: MaterialButton(
+                              onPressed: () {
+                                selectPDF();
+                              },
+                              child: Text.rich(
+                                TextSpan(
+                                  children: [
+                                    WidgetSpan(
+                                      child: Icon(
+                                        Icons.file_upload_outlined,
+                                        color: Colors.white,
+                                        size: sizefont * 0.9,
+                                      ),
                                     ),
-                                  ),
+                                    WidgetSpan(
+                                      child: SizedBox(
+                                        width: size.width * 0.01,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: "Update",
+                                      style: TextStyle(
+                                        fontFamily: 'poppins',
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          )
-                        : Text(
-                            fileName ?? "",
-                            style: TextStyle(
-                              color: blackTeal,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
                           ),
-                  ],
-                ),
+                        )
+                      : Text(
+                          fileName ?? "",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 126, 207, 200),
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                ],
               ),
+              const SizedBox(height: 20),
               FutureBuilder(
                 future: getJob(),
                 builder: ((context, snapshot) {
@@ -328,6 +407,16 @@ class _ProfileState extends State<Profile> {
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              const SizedBox(height: 20,),
+                              Text(
+                                "Applications:",
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: sizefont * 1.3,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.teal,
+                                ),
+                              ),
                               const SizedBox(height: 10),
                               ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -382,7 +471,7 @@ class _ProfileState extends State<Profile> {
                                                         const LoginScreen()));
                                           },
                                           child: SizedBox(
-                                            width: size.width * 0.8,
+                                            width: size.width * 0.746,
                                             child: Text(
                                               "Logout",
                                               textAlign: TextAlign.center,
