@@ -142,139 +142,132 @@ class _JobDescState extends State<JobDesc> {
       }
     }
 
-    final jobDetails = Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: sizefont * 0.2),
-              child: CircleAvatar(
-                radius: sizefont * 0.6,
-                backgroundColor: textgreen,
-                child: Icon(
-                  Icons.location_on_sharp,
-                  color: whiteColor,
-                  size: sizefont,
+    final jobDetails = SizedBox(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment:
+            MainAxisAlignment.spaceBetween, // Distribute children evenly
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: sizefont * 0.2),
+                child: CircleAvatar(
+                  radius: sizefont * 0.6,
+                  backgroundColor: textgreen,
+                  child: Icon(
+                    Icons.location_on_sharp,
+                    color: whiteColor,
+                    size: sizefont,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: sizefont * 0.5,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'MODE',
-                  style: TextStyle(
-                    color: darkgrey,
-                    fontFamily: "poppins",
-                    fontSize: sizefont,
+              SizedBox(width: sizefont * 0.5), // Use SizedBox for spacing
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'MODE',
+                    style: TextStyle(
+                      color: darkgrey,
+                      fontFamily: "poppins",
+                      fontSize: sizefont,
+                    ),
                   ),
-                ),
-                Text(
-                  widget.workfromHome!,
-                  style: TextStyle(
-                    color: blackColor,
-                    fontFamily: "poppins",
-                    fontSize: sizefont * 0.8,
+                  Text(
+                    widget.workfromHome!,
+                    style: TextStyle(
+                      color: blackColor,
+                      fontFamily: "poppins",
+                      fontSize: sizefont * 0.8,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        SizedBox(
-          width: size.width * 0.05,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: sizefont * 0.2),
-              child: CircleAvatar(
-                radius: sizefont * 0.6,
-                backgroundColor: textgreen,
-                child: Icon(
-                  Icons.currency_rupee_outlined,
-                  color: whiteColor,
-                  size: sizefont,
+                ],
+              ),
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: sizefont * 0.2),
+                child: CircleAvatar(
+                  radius: sizefont * 0.6,
+                  backgroundColor: textgreen,
+                  child: Icon(
+                    Icons.currency_rupee_outlined,
+                    color: whiteColor,
+                    size: sizefont,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: sizefont * 0.5,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'MIN STIPEND',
-                  style: TextStyle(
-                    color: darkgrey,
-                    fontFamily: "poppins",
-                    fontSize: sizefont,
+              SizedBox(width: sizefont * 0.5),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'MIN STIPEND',
+                    style: TextStyle(
+                      color: darkgrey,
+                      fontFamily: "poppins",
+                      fontSize: sizefont,
+                    ),
                   ),
-                ),
-                Text(
-                  widget.minStipend!,
-                  style: TextStyle(
-                    color: blackColor,
-                    fontFamily: "poppins",
-                    fontSize: sizefont * 0.8,
+                  Text(
+                    widget.minStipend!,
+                    style: TextStyle(
+                      color: blackColor,
+                      fontFamily: "poppins",
+                      fontSize: sizefont * 0.8,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        SizedBox(
-          width: size.width * 0.05,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: sizefont * 0.2),
-              child: CircleAvatar(
-                radius: sizefont * 0.6,
-                backgroundColor: textgreen,
-                child: Icon(
-                  Icons.timer,
-                  color: whiteColor,
-                  size: sizefont,
+                ],
+              ),
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: sizefont * 0.2),
+                child: CircleAvatar(
+                  radius: sizefont * 0.6,
+                  backgroundColor: textgreen,
+                  child: Icon(
+                    Icons.timer,
+                    color: whiteColor,
+                    size: sizefont,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: sizefont * 0.5,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'DURATION',
-                  style: TextStyle(
-                    color: darkgrey,
-                    fontFamily: "poppins",
-                    fontSize: sizefont,
+              SizedBox(width: sizefont * 0.5),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'DURATION',
+                    style: TextStyle(
+                      color: darkgrey,
+                      fontFamily: "poppins",
+                      fontSize: sizefont,
+                    ),
                   ),
-                ),
-                Text(
-                  widget.duration!,
-                  style: TextStyle(
-                    color: blackColor,
-                    fontFamily: "poppins",
-                    fontSize: sizefont * 0.8,
+                  Text(
+                    widget.duration!,
+                    style: TextStyle(
+                      color: blackColor,
+                      fontFamily: "poppins",
+                      fontSize: sizefont * 0.8,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
     final aboutComp = ExpansionPanelList(
       expansionCallback: (panelIndex, isExpanded) {
@@ -486,7 +479,8 @@ class _JobDescState extends State<JobDesc> {
               children: [
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -495,14 +489,13 @@ class _JobDescState extends State<JobDesc> {
                           widget.jobPosition ?? "",
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                              color: textgreen,
-                              fontFamily: "poppins",
-                              fontSize: sizefont * 1.5,
-                              fontWeight: FontWeight.bold),
+                            color: textgreen,
+                            fontFamily: "poppins",
+                            fontSize: sizefont * 1.5,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        SizedBox(
-                          height: 0.003 * size.height,
-                        ),
+                        SizedBox(height: 0.003 * size.height),
                         Text(
                           widget.companyName ?? "",
                           style: TextStyle(
@@ -511,9 +504,7 @@ class _JobDescState extends State<JobDesc> {
                             fontSize: sizefont * 1.2,
                           ),
                         ),
-                        SizedBox(
-                          height: 0.003 * size.height,
-                        ),
+                        SizedBox(height: 0.003 * size.height),
                         Text(
                           widget.location ?? "",
                           style: TextStyle(
@@ -524,17 +515,21 @@ class _JobDescState extends State<JobDesc> {
                         ),
                       ],
                     ),
+                    //SizedBox(width: 0.17 * size.width),
+                    Spacer(),
                     SizedBox(
-                      width: size.width * 0.1,
-                    ),
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(widget.logo ?? ""),
-                          fit: BoxFit.cover,
-                        ),
+                      width: 0.15 * size.width,
+                      height: 0.15 * size.width,
+                      child: Image.network(
+                        widget.logo ?? "",
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Center(
+                            child: Icon(Icons.error_outline, color: Colors.red),
+                          );
+                        },
                       ),
-                    )
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -581,8 +576,9 @@ class _JobDescState extends State<JobDesc> {
                   height: size.width * 0.05,
                 ),
                 ((DateFormat("yyyy-MM-ddTHH:mm:ss.SSSZ")
-                            .parse(widget.deadline ?? ""))
-                        .isAfter(DateTime.now()) && !widget.applied)
+                                .parse(widget.deadline ?? ""))
+                            .isAfter(DateTime.now()) &&
+                        !widget.applied)
                     ? applyButton
                     : const SizedBox.shrink()
               ]),

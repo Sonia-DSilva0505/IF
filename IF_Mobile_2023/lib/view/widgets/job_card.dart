@@ -36,19 +36,20 @@ class JobCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.058, 0,
-          MediaQuery.of(context).size.width * 0.05, 0),
-      width: MediaQuery.of(context).size.width * 0.85,
-      height: MediaQuery.of(context).size.height * 0.27,
-      margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height * 0.031,
-          left: MediaQuery.of(context).size.width * 0.072,
-          right: MediaQuery.of(context).size.width * 0.072),
-      decoration: BoxDecoration(
-          border: Border.all(width: 0.3),
-          borderRadius: BorderRadius.circular(3),
-          color: Colors.white),
+  return Container(
+    padding: EdgeInsets.fromLTRB(
+        MediaQuery.of(context).size.width * 0.058, 0, MediaQuery.of(context).size.width * 0.05, 0),
+    width: MediaQuery.of(context).size.width * 0.85,
+    margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height * 0.031,
+        left: MediaQuery.of(context).size.width * 0.072,
+        right: MediaQuery.of(context).size.width * 0.072),
+    decoration: BoxDecoration(
+      border: Border.all(width: 0.3),
+      borderRadius: BorderRadius.circular(3),
+      color: Colors.white,
+    ),
+    child: Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -119,7 +120,11 @@ class JobCard extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+            height: 20,
+          ),
           Row(
+            //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 margin: EdgeInsets.only(
@@ -138,19 +143,20 @@ class JobCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.width * 0.029,
-                    left: MediaQuery.of(context).size.width * 0.0194),
-                height: 21,
-                width: MediaQuery.of(context).size.width * 0.12,
-                child: const Text(
-                  'MODE',
-                  style: TextStyle(
-                      fontFamily: 'poppins',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: Colors.grey),
+              Flexible(
+                child: FittedBox(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.0194),
+                    child: const Text(
+                      'MODE',
+                      style: TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Colors.grey),
+                    ),
+                  ),
                 ),
               ),
               Container(
@@ -171,27 +177,28 @@ class JobCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.019,
-                    left: MediaQuery.of(context).size.width * 0.0194),
-                height: 21,
-                width: 80,
-                child: const Text(
-                  'MIN STIPEND',
-                  style: TextStyle(
-                      fontFamily: 'poppins',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: Colors.grey),
+              Flexible(
+                child: FittedBox(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.0194),
+                    child: const Text(
+                      'STIPEND',
+                      style: TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Colors.grey),
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.015,
-              ),
+              
               Container(
                 margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.0115),
+                    top: MediaQuery.of(context).size.height * 0.0115,
+                    left: MediaQuery.of(context).size.height * 0.0165,
+                    ),
                 height: 15,
                 width: 15,
                 decoration: const BoxDecoration(
@@ -206,64 +213,75 @@ class JobCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.019,
-                    left: MediaQuery.of(context).size.width * 0.018),
-                height: 21,
-                width: 62,
-                child: const Text(
-                  'DURATION',
-                  style: TextStyle(
-                      fontFamily: 'poppins',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: Colors.grey),
+              
+              Flexible(
+                child: FittedBox(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.018),
+                    child: const Text(
+                      'DURATION',
+                      style: TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Colors.grey),
+                    ),
+                  ),
                 ),
               ),
             ],
           ),
           Row(
             children: [
-              Container(
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.055),
-                  height: 18,
-                  width: 40,
-                  child: Text(
-                    mode ?? "",
-                    style: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: Colors.black),
-                  )),
-              Container(
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.1),
-                  height: 18,
-                  width: 40,
-                  child: Text(
-                    stipend ?? "",
-                    style: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: Colors.black),
-                  )),
-              Container(
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.168),
-                  height: 18,
-                  width: MediaQuery.of(context).size.width * 0.19,
-                  child: Text(
-                    duration ?? "",
-                    style: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: Colors.black),
-                  )),
+              Flexible(
+                child: FittedBox(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.055),
+                    child: Text(
+                      mode ?? "",
+                      style: const TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: FittedBox(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.096),
+                    child: Text(
+                      stipend ?? "",
+                      style: const TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: FittedBox(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.138),
+                    child: Text(
+                      duration ?? "",
+                      style: const TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12,
+                          color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           SizedBox(
@@ -288,25 +306,31 @@ class JobCard extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => JobDesc(
-                              companyName: companyName ?? "",
-                              duration: duration ?? "",
-                              jobid: jobid ?? "",
-                              jobPosition: position ?? "",
-                              minStipend: stipend ?? "",
-                              workfromHome: mode ?? "",
-                              about: about ?? "",
-                              skills: skills,
-                              requirements: requirements ?? [],
-                              logo: logo!,
-                              location: location ?? "",
-                              deadline: deadline ?? "",
-                              v: v ?? 0, applied: false,)));
+                                companyName: companyName ?? "",
+                                duration: duration ?? "",
+                                jobid: jobid ?? "",
+                                jobPosition: position ?? "",
+                                minStipend: stipend ?? "",
+                                workfromHome: mode ?? "",
+                                about: about ?? "",
+                                skills: skills,
+                                requirements: requirements ?? [],
+                                logo: logo!,
+                                location: location ?? "",
+                                deadline: deadline ?? "",
+                                v: v ?? 0,
+                                applied: false,
+                              )));
                 },
               ),
             ],
           ),
+          SizedBox(
+            height: 20,
+          ),
         ],
       ),
-    );
+    )
+  );
   }
 }

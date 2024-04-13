@@ -92,7 +92,7 @@ class _JobProfileState extends State<JobProfile> {
                 }));
               },
               icon: Icon(
-                Icons.shopping_cart_outlined,
+                Icons.cases_outlined,
                 color: blackTeal,
               ),
             ),
