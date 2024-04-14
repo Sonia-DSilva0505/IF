@@ -62,6 +62,7 @@ class _ProfileState extends State<Profile> {
     String? email = GetStorage().read("email");
     String? contact = GetStorage().read("contact");
     String? dept = GetStorage().read("department");
+    
     void updateResume(File pdf, BuildContext context) async {
       List<String> res = [];
       String userid = GetStorage().read("id");
@@ -71,6 +72,7 @@ class _ProfileState extends State<Profile> {
         setState(() {
           resumeLink = res[1];
         });
+        GetStorage().write('resume', res[1]);
         MotionToast.success(
           toastDuration: const Duration(milliseconds: 2000),
           height: 65,
