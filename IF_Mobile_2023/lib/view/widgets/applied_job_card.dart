@@ -13,7 +13,6 @@ class AppliedJobCard extends StatelessWidget {
   final String? skills;
   final String? about;
   final String? jobid;
-  
   final String? link;
   final int? v;
   final String? deadline;
@@ -29,7 +28,6 @@ class AppliedJobCard extends StatelessWidget {
       required this.deadline,
       required this.about,
       required this.requirements,
-      
       required this.link,
       required this.skills,
       required this.jobid,
@@ -58,7 +56,7 @@ class AppliedJobCard extends StatelessWidget {
                         about: about ?? "",
                         skills: skills,
                         requirements: requirements ?? [],
-                        logo: logo!,
+                        logo: logo ?? "",
                         location: location ?? "",
                         deadline: deadline ?? "",
                         v: v ?? 0,

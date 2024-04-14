@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-
 import 'splash_screen.dart';
 
 void main() async {

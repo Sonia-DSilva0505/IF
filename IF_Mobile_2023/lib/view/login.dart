@@ -76,17 +76,17 @@ class _LoginScreenState extends State<LoginScreen> {
         autofocus: false,
         controller: emailController,
         validator: (value) {
-          if (value!.isEmpty) {
+          if ((value ?? "").isEmpty) {
             return ("Please enter your Email ID");
           }
           if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9,-]+.[a-z]")
-              .hasMatch(value)) {
+              .hasMatch(value ?? "")) {
             return ("Please Enter a valid Email");
           }
           return null;
         },
         onSaved: (value) {
-          emailController.text = value!;
+          emailController.text = value ?? "";
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(

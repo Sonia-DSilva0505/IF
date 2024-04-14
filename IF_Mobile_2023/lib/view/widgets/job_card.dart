@@ -62,7 +62,7 @@ class JobCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    position!,
+                    position ?? "",
                     style: const TextStyle(
                       fontFamily: 'poppins',
                       fontSize: 16,
@@ -317,7 +317,7 @@ class JobCard extends StatelessWidget {
                                     about: about ?? "",
                                     skills: skills,
                                     requirements: requirements ?? [],
-                                    logo: logo!,
+                                    logo: logo ?? "",
                                     location: location ?? "",
                                     deadline: deadline ?? "",
                                     link: link,

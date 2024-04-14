@@ -181,7 +181,7 @@ class _JobDescState extends State<JobDesc> {
                     ),
                   ),
                   Text(
-                    widget.workfromHome!,
+                    widget.workfromHome ?? "",
                     style: TextStyle(
                       color: blackColor,
                       fontFamily: "poppins",
@@ -220,7 +220,7 @@ class _JobDescState extends State<JobDesc> {
                     ),
                   ),
                   Text(
-                    widget.minStipend!,
+                    widget.minStipend ?? "",
                     style: TextStyle(
                       color: blackColor,
                       fontFamily: "poppins",
@@ -259,7 +259,7 @@ class _JobDescState extends State<JobDesc> {
                     ),
                   ),
                   Text(
-                    widget.duration!,
+                    widget.duration ?? "",
                     style: TextStyle(
                       color: blackColor,
                       fontFamily: "poppins",
