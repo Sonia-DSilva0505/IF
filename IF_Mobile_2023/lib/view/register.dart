@@ -36,21 +36,21 @@ class _InfoPageState extends State<InfoPage> {
 
   List<String> genders = <String>['Male', 'Female', 'Prefer not to say'];
   String genderval = 'Male';
-  List<String> years = <String>['2023', '2021', '2022'];
-  String yearval = '2021';
+  List<String> years = <String>['FE', 'SE', 'TE'];
+  String yearval = 'FE';
   List<String> grads = <String>['2027', '2025', '2026'];
-  String gradval = '2025';
+  String gradval = '2027';
   List<String> depts = <String>[
-    'CS',
+    'CE',
     'IT',
-    'DS',
-    'AIML',
-    'AIDS',
-    'IOT',
+    'CSE DS',
+    'AI/ML',
+    'AI/DS',
+    'ICB',
     'EXTC',
     'MECH'
   ];
-  String deptval = 'CS';
+  String deptval = 'CE';
   String resume = "";
   PlatformFile? pickedfile;
   File? pdf;

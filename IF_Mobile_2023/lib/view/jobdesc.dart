@@ -397,11 +397,13 @@ class _JobDescState extends State<JobDesc> {
           body: Wrap(
             children: widget.requirements.map((e) {
               return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(left: 15, bottom: 8),
-                    height: 5.0,
-                    width: 5.0,
+                    margin: EdgeInsets.only(
+                        left: 15, bottom: 8, top: sizefont * 0.4),
+                    height: sizefont * 0.4,
+                    width: sizefont * 0.4,
                     decoration: const BoxDecoration(
                       color: Colors.black,
                       shape: BoxShape.circle,
@@ -510,11 +512,9 @@ class _JobDescState extends State<JobDesc> {
                         ),
                       ],
                     ),
-                    //SizedBox(width: 0.17 * size.width),
                     const Spacer(),
                     SizedBox(
                       width: 0.2 * size.width,
-                      height: 0.2 * size.width,
                       child: Image.network(
                         widget.logo ?? "",
                         fit: BoxFit.contain,
@@ -566,11 +566,11 @@ class _JobDescState extends State<JobDesc> {
                 GestureDetector(
                   onTap: () async {
                     final Uri website =
-                        Uri.parse("https://${widget.link ?? "www.google.com"}");
+                        Uri.parse(widget.link ?? "https://www.google.com");
                     await launchUrl(website);
                   },
                   child: Text(
-                    widget.link ?? "www.google.com",
+                    widget.link ?? "https://www.google.com",
                     style: TextStyle(
                         fontFamily: 'poppins',
                         fontWeight: FontWeight.w400,
@@ -597,12 +597,33 @@ class _JobDescState extends State<JobDesc> {
                 SizedBox(
                   height: size.width * 0.05,
                 ),
-                ((DateFormat("yyyy-MM-ddTHH:mm:ss.SSSZ")
-                                .parse(widget.deadline ?? ""))
-                            .isAfter(DateTime.now()) &&
-                        !widget.applied)
-                    ? applyButton
-                    : const SizedBox.shrink()
+                if ((DateFormat("yyyy-MM-ddTHH:mm:ss.SSSZ")
+                            .parse(widget.deadline ?? ""))
+                        .isAfter(DateTime.now()) &&
+                    !widget.applied)
+                  applyButton
+                else if (!widget.applied)
+                  SizedBox(
+                    width: size.width * 0.9,
+                    height: sizefont * 3,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: textgreen,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Applications Closed",
+                          style: TextStyle(
+                              fontFamily: 'poppins',
+                              fontSize: sizefont,
+                              color: whiteColor),
+                        ),
+                      ),
+                    ),
+                  )
+                else
+                  const SizedBox.shrink()
               ]),
         ),
       ),

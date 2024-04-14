@@ -44,7 +44,7 @@ class JobCard extends StatelessWidget {
             0, MediaQuery.of(context).size.width * 0.05, 0),
         width: MediaQuery.of(context).size.width * 0.85,
         margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.height * 0.031,
+            bottom: MediaQuery.of(context).size.height * 0.03,
             left: MediaQuery.of(context).size.width * 0.072,
             right: MediaQuery.of(context).size.width * 0.072),
         decoration: BoxDecoration(
@@ -300,7 +300,7 @@ class JobCard extends StatelessWidget {
                           style: TextStyle(
                               fontFamily: 'poppins',
                               fontWeight: FontWeight.w500,
-                              fontSize: 13,
+                              fontSize: 12.5,
                               color: Colors.teal),
                         )),
                     onTap: () {

@@ -105,13 +105,42 @@ class AuthController {
   void init(res) async {
     try {
       final box = GetStorage();
+      String dept = res["data"]["department"];
+      switch (dept) {
+        case "Computer Engineering":
+          dept = "CE";
+          break;
+        case "Information Technology":
+          dept = "IT";
+          break;
+        case "Computer Science and Engineering (IOT, Cybersecurity and Blockchain)":
+          dept = "ICB";
+          break;
+        case "Electronics and Telecommunication Engineering":
+          dept = "EXTC";
+          break;
+        case "Artificial Intelligence and Data Science":
+          dept = "AI/DS";
+          break;
+        case "Artificial Intelligence and Machine Learning":
+          dept = "AI/ML";
+          break;
+        case "Computer Science and Engineering (Data Science)":
+          dept = "CSE DS";
+          break;
+        case "Mechanical Engineering":
+          dept = "MECH";
+          break;
+        default:
+          dept = dept;
+      }
       box.write('token', res['token']);
       box.write('id', res['data']['_id']);
       box.write('name', res['data']['name']);
       box.write('email', res['data']['email']);
       box.write('sapid', res['data']['sap']);
       box.write('contact', res['data']['contact']);
-      box.write('department', res['data']['department']);
+      box.write('department', dept);
       box.write('resume', res['data']['resume']);
     } catch (e) {
       log(e.toString());

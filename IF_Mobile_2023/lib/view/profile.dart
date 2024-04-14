@@ -43,7 +43,6 @@ class _ProfileState extends State<Profile> {
   String resume = "";
   PlatformFile? pickedfile;
   File? pdf;
-  String? fileName;
   String? resumeLink;
 
   @override
@@ -121,13 +120,9 @@ class _ProfileState extends State<Profile> {
         if (result != null) {
           pickedfile = result.files.first;
           resume = result.files.first.path!;
-          File selectedFile = File(result.files.single.path!);
 
           setState(() {
             pdf = File(result.files.single.path!);
-            var lastSeperator =
-                selectedFile.path.lastIndexOf(Platform.pathSeparator);
-            fileName = selectedFile.path.substring(lastSeperator + 1);
           });
           if (pdf == null) {
             MotionToast.error(
@@ -343,22 +338,10 @@ class _ProfileState extends State<Profile> {
                                   onPressed: () {
                                     selectPDF();
                                   },
-                                  child: Text.rich(
+                                  child: const Text.rich(
                                     TextSpan(
                                       children: [
-                                        WidgetSpan(
-                                          child: Icon(
-                                            Icons.file_upload_outlined,
-                                            color: Colors.white,
-                                            size: sizefont * 0.9,
-                                          ),
-                                        ),
-                                        WidgetSpan(
-                                          child: SizedBox(
-                                            width: size.width * 0.01,
-                                          ),
-                                        ),
-                                        const TextSpan(
+                                        TextSpan(
                                           text: "Update",
                                           style: TextStyle(
                                             fontFamily: 'poppins',
@@ -465,7 +448,6 @@ class _ProfileState extends State<Profile> {
                                     v: _getAppliedJobs[index].v,
                                     deadline: _getAppliedJobs[index].deadline,
                                     link: _getAppliedJobs[index].link,
-
                                   );
                                 },
                               ),
@@ -482,9 +464,8 @@ class _ProfileState extends State<Profile> {
                     elevation: 5,
                     borderRadius: BorderRadius.circular(5),
                     color: blackTeal,
-                    child: Container(
-                      height: sizefont * 2.5,
-                      padding: EdgeInsets.symmetric(vertical: sizefont * 0.5),
+                    child: SizedBox(
+                      height: sizefont * 2,
                       child: MaterialButton(
                           onPressed: () {
                             GetStorage().erase();
@@ -500,7 +481,7 @@ class _ProfileState extends State<Profile> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontFamily: 'poppins',
-                                  fontSize: sizefont,
+                                  fontSize: sizefont * 0.8,
                                   color: whiteColor),
                             ),
                           )),
