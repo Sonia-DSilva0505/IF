@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
@@ -62,7 +64,7 @@ class _ProfileState extends State<Profile> {
         });
         if (pdf == null) {
           MotionToast.error(
-              toastDuration: const Duration(milliseconds: 500),
+              toastDuration: const Duration(milliseconds: 2000),
               height: 65,
               borderRadius: 10,
               width: 400,
@@ -97,7 +99,7 @@ class _ProfileState extends State<Profile> {
 
     if (status == "Success") {
       MotionToast.success(
-        toastDuration: const Duration(milliseconds: 500),
+        toastDuration: const Duration(milliseconds: 2000),
         height: 65,
         borderRadius: 10,
         padding: EdgeInsets.zero,
@@ -117,7 +119,7 @@ class _ProfileState extends State<Profile> {
       ).show(context);
     } else {
       MotionToast.error(
-              toastDuration: const Duration(milliseconds: 500),
+              toastDuration: const Duration(milliseconds: 2000),
               height: 65,
               borderRadius: 10,
               width: 400,
@@ -149,7 +151,6 @@ class _ProfileState extends State<Profile> {
     String? email = GetStorage().read("email");
     String? contact = GetStorage().read("contact");
     String? dept = GetStorage().read("department");
-    String? resume = GetStorage().read("resume");
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -175,118 +176,112 @@ class _ProfileState extends State<Profile> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                name ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
-              ),
-              Text(
-                email?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
-              ),
-              Text(
-                sap ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
-              ),
-              Text(
-                contact ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
-              ),
-              Text(
-                dept ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
-              ),
-              Text(
-                resume ?? "",
-                style: TextStyle(
-                    fontFamily: 'poppins',
-                    color: textgreen,
-                    fontSize: sizefont),
+              Padding(
+                padding: const EdgeInsets.all( 15.0),
+                child: SizedBox(
+                  width: size.width*0.9,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 0.1,
+                        ),
+                        borderRadius: BorderRadius.circular(3),
+                        color: Colors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.all( 15.0),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name ?? "",
+                            style: TextStyle(
+                                fontFamily: 'poppins',
+                                color: textgreen,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 28),
+                          ),
+                          Text(
+                            email ?? "",
+                            style: TextStyle(
+                                fontFamily: 'poppins',
+                                color: textgreen,
+                                fontSize: 16),
+                          ),
+                          Text(
+                            sap ?? "",
+                            style: TextStyle(
+                                fontFamily: 'poppins',
+                                color: textgreen,
+                                fontSize: 16),
+                          ),
+                          Text(
+                            contact ?? "",
+                            style: TextStyle(
+                                fontFamily: 'poppins',
+                                color: textgreen,
+                                fontSize: 16),
+                          ),
+                          Text(
+                            dept ?? "",
+                            style: TextStyle(
+                                fontFamily: 'poppins',
+                                color: textgreen,
+                                fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Row(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.loose,
-                      child: Text(
-                        'Update Resume',
-                        style: TextStyle(
-                            fontFamily: 'poppins',
-                            color: textgreen,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 0.05 * size.width,
-                    ),
-                    fileName == null
-                        ? Flexible(
-                            flex: 1,
-                            fit: FlexFit.loose,
-                            child: SizedBox(
-                              width: size.width * 0.3,
-                              child: Material(
-                                borderRadius: BorderRadius.circular(5),
-                                color: whiteColor,
-                                child: MaterialButton(
-                                  onPressed: () {
-                                    selectPDF();
-                                  },
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        WidgetSpan(
-                                            child: Icon(
-                                          Icons.file_upload_outlined,
-                                          color: darkgrey,
-                                          size: sizefont * 0.9,
-                                        )),
-                                        WidgetSpan(
-                                            child: SizedBox(
-                                          width: size.width * 0.01,
-                                        )),
-                                        TextSpan(
-                                          text: "Add File",
-                                          style: TextStyle(
-                                              fontFamily: 'poppins',
-                                              fontSize: 14,
-                                              color: darkgrey),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                child: fileName == null
+                    ? SizedBox(
+                      width: size.width * 0.9,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(5),
+                        color: whiteColor,
+                        child: MaterialButton(
+                          onPressed: () {
+                            selectPDF();
+                          },
+                          child: Text.rich(
+                            TextSpan(
+                              children: [
+                                WidgetSpan(
+                                    child: Icon(
+                                  Icons.file_upload_outlined,
+                                  color: textgreen,
+                                  size: sizefont * 0.9,
+                                )),
+                                WidgetSpan(
+                                    child: SizedBox(
+                                  width: size.width * 0.01,
+                                )),
+                                TextSpan(
+                                  text: "Update Resume",
+                                  style: TextStyle(
+                                      fontFamily: 'poppins',
+                                      fontSize: 16,
+                                      color:textgreen),
                                 ),
-                              ),
-                            ),
-                          )
-                        : Text(
-                            fileName ?? "",
-                            style: TextStyle(
-                              color: blackTeal,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                              ],
                             ),
                           ),
-                  ],
-                ),
+                        ),
+                      ),
+                    )
+                    : Text(
+                        fileName ?? "",
+                        style: TextStyle(
+                          color: blackTeal,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
               ),
               FutureBuilder(
                 future: getJob(),
@@ -299,35 +294,51 @@ class _ProfileState extends State<Profile> {
                     );
                   } else {
                     return count == 0
-                        ? Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "No Profiles yet :(",
-                                  style: TextStyle(
-                                    color: blackColor,
-                                    fontFamily: "poppins",
-                                    fontSize: sizefont * 0.8,
+                        ? Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "No Applications yet :(",
+                                    style: TextStyle(
+                                      color: blackColor,
+                                      fontFamily: "poppins",
+                                      fontSize: sizefont * 0.8,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "Apply to internships",
-                                  style: TextStyle(
-                                    color: blackColor,
-                                    fontFamily: "poppins",
-                                    fontSize: sizefont * 0.5,
+                                  const SizedBox(
+                                    height: 10,
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    "Apply to internships",
+                                    style: TextStyle(
+                                      color: blackColor,
+                                      fontFamily: "poppins",
+                                      fontSize: sizefont * 0.5,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          )
+                        )
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              const SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15.0),
+                                child: Text(
+                                  "My Applications",
+                                  style: TextStyle(
+                                      fontFamily: 'poppins',
+                                      color: blackColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 20),
+                                ),
+                              ),
                               const SizedBox(height: 10),
                               ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -363,7 +374,13 @@ class _ProfileState extends State<Profile> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              Center(
+
+                            ],
+                          );
+                  }
+                }),
+              ),
+                                            Center(
                                 child: Material(
                                     elevation: 5,
                                     borderRadius: BorderRadius.circular(5),
@@ -394,11 +411,6 @@ class _ProfileState extends State<Profile> {
                                           )),
                                     )),
                               )
-                            ],
-                          );
-                  }
-                }),
-              ),
             ],
           ),
         ),

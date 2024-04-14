@@ -23,7 +23,6 @@ class AuthController {
     }
 
     final response = jsonDecode(body);
-    print(response);
     init(response);
     return "Success";
   }
@@ -113,7 +112,6 @@ class AuthController {
       box.write('sapid', res['data']['sap']);
       box.write('contact', res['data']['contact']);
       box.write('department', res['data']['department']);
-      box.write('resume', res['data']['resume']);
     } catch (e) {
       log(e.toString());
     }

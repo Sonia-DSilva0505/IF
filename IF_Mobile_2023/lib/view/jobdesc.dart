@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:internship_fair/constants/constants.dart';
 import 'package:internship_fair/controller/apply_job.dart';
@@ -67,7 +69,7 @@ class _JobDescState extends State<JobDesc> {
 
       if (status == "Successfully applied for Job.") {
         MotionToast.success(
-          toastDuration: const Duration(milliseconds: 500),
+          toastDuration: const Duration(milliseconds: 2000),
           width: size.width * 0.7,
           height: 65,
           borderRadius: 10,
@@ -87,7 +89,7 @@ class _JobDescState extends State<JobDesc> {
         ).show(context);
       } else if (status == "Already applied for Job") {
         MotionToast(
-          toastDuration: const Duration(milliseconds: 500),
+          toastDuration: const Duration(milliseconds: 2000),
           primaryColor: darkgrey,
           width: size.width * 0.7,
           height: 65,
@@ -113,7 +115,7 @@ class _JobDescState extends State<JobDesc> {
         ).show(context);
       } else {
         MotionToast.error(
-          toastDuration: const Duration(milliseconds: 500),
+          toastDuration: const Duration(milliseconds: 2000),
           height: sizefont * 5,
           borderRadius: 10,
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
@@ -147,7 +149,7 @@ class _JobDescState extends State<JobDesc> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment:
-            MainAxisAlignment.spaceBetween, // Distribute children evenly
+            MainAxisAlignment.spaceBetween,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
