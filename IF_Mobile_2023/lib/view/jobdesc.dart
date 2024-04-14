@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:internship_fair/constants/constants.dart';
 import 'package:internship_fair/controller/apply_job.dart';
@@ -491,23 +492,33 @@ class _JobDescState extends State<JobDesc> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          widget.jobPosition ?? "",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: textgreen,
-                            fontFamily: "poppins",
-                            fontSize: sizefont * 1.5,
-                            fontWeight: FontWeight.bold,
+                        SizedBox(
+                          width: size.width * 0.65,
+                          child: Text(
+                            widget.jobPosition ?? "",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              color: textgreen,
+                              fontFamily: "poppins",
+                              fontSize: sizefont * 1.35,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 5,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         SizedBox(height: 0.003 * size.height),
-                        Text(
-                          widget.companyName ?? "",
-                          style: TextStyle(
-                            color: blackColor,
-                            fontFamily: "poppins",
-                            fontSize: sizefont * 1.2,
+                        SizedBox(
+                          width: size.width * 0.65,
+                          child: Text(
+                            widget.companyName ?? "",
+                            style: TextStyle(
+                              color: blackColor,
+                              fontFamily: "poppins",
+                              fontSize: sizefont * 1.2,
+                            ),
+                            maxLines: 5,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
@@ -563,21 +574,22 @@ class _JobDescState extends State<JobDesc> {
                 SizedBox(
                   height: size.width * 0.01,
                 ),
-                GestureDetector(
-                  onTap: () async {
-                    final Uri website =
-                        Uri.parse(widget.link ?? "https://www.google.com");
-                    await launchUrl(website);
-                  },
-                  child: Text(
-                    widget.link ?? "https://www.google.com",
-                    style: TextStyle(
-                        fontFamily: 'poppins',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        color: textgreen),
+                if (widget.link != null)
+                  GestureDetector(
+                    onTap: () async {
+                      final Uri website =
+                          Uri.parse(widget.link ?? "https://www.google.com");
+                      await launchUrl(website);
+                    },
+                    child: Text(
+                      widget.link ?? "https://www.google.com",
+                      style: TextStyle(
+                          fontFamily: 'poppins',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          color: textgreen),
+                    ),
                   ),
-                ),
                 SizedBox(
                   height: size.width * 0.03,
                 ),

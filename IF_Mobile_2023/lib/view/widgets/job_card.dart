@@ -59,19 +59,20 @@ class JobCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    position ?? "",
-                    style: const TextStyle(
-                      fontFamily: 'poppins',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.normal,
-                      color: Colors.teal,
+                  Flexible(
+                    child: Text(
+                      position ?? "",
+                      style: const TextStyle(
+                        fontFamily: 'poppins',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.normal,
+                        color: Colors.teal,
+                      ),
                     ),
                   ),
-                  const Spacer(),
                   SizedBox(
                     // height: MediaQuery.of(context).size.width * 0.15,
                     width: MediaQuery.of(context).size.width * 0.15,
