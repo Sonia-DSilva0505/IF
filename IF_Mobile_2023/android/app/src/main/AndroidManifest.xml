@@ -2,9 +2,9 @@
     package="com.example.internship_fair">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="internship_fair"
+        android:label="DJSCE ACM IF"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
