@@ -138,6 +138,7 @@ class _JobProfileState extends State<JobProfile> {
                                     jobid: _getJob[index].id,
                                     v: _getJob[index].v,
                                     deadline: _getJob[index].deadline,
+                                    link: _getJob[index].link,
                                   );
                                 },
                               )

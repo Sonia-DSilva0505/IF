@@ -62,7 +62,7 @@ class _ProfileState extends State<Profile> {
     String? email = GetStorage().read("email");
     String? contact = GetStorage().read("contact");
     String? dept = GetStorage().read("department");
-    
+
     void updateResume(File pdf, BuildContext context) async {
       List<String> res = [];
       String userid = GetStorage().read("id");
@@ -216,7 +216,7 @@ class _ProfileState extends State<Profile> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
@@ -225,7 +225,7 @@ class _ProfileState extends State<Profile> {
                               sap ?? "",
                               style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
@@ -240,7 +240,7 @@ class _ProfileState extends State<Profile> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
@@ -248,7 +248,7 @@ class _ProfileState extends State<Profile> {
                               email ?? "",
                               style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                               overflow: TextOverflow.fade,
@@ -263,7 +263,7 @@ class _ProfileState extends State<Profile> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
@@ -272,7 +272,7 @@ class _ProfileState extends State<Profile> {
                               contact ?? "",
                               style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
@@ -286,7 +286,7 @@ class _ProfileState extends State<Profile> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
@@ -295,13 +295,13 @@ class _ProfileState extends State<Profile> {
                               dept ?? "",
                               style: TextStyle(
                                 fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.9,
+                                fontSize: sizefont * 0.7,
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: size.height * 0.03),
+                        SizedBox(height: size.height * 0.01),
                         Row(
                           children: [
                             SizedBox(
@@ -464,6 +464,8 @@ class _ProfileState extends State<Profile> {
                                     jobid: _getAppliedJobs[index].id,
                                     v: _getAppliedJobs[index].v,
                                     deadline: _getAppliedJobs[index].deadline,
+                                    link: _getAppliedJobs[index].link,
+
                                   );
                                 },
                               ),

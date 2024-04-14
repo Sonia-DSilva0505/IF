@@ -6,6 +6,7 @@ import 'package:internship_fair/controller/apply_job.dart';
 import 'package:intl/intl.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JobDesc extends StatefulWidget {
   final String? jobPosition,
@@ -17,6 +18,7 @@ class JobDesc extends StatefulWidget {
       logo,
       location,
       skills,
+      link,
       deadline;
   final List<String> requirements;
   final int? v;
@@ -26,6 +28,7 @@ class JobDesc extends StatefulWidget {
   const JobDesc(
       {Key? key,
       required this.jobid,
+      required this.link,
       required this.jobPosition,
       required this.companyName,
       required this.minStipend,
@@ -148,8 +151,7 @@ class _JobDescState extends State<JobDesc> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -506,7 +508,6 @@ class _JobDescState extends State<JobDesc> {
                             fontSize: sizefont * 1.2,
                           ),
                         ),
-                        
                       ],
                     ),
                     //SizedBox(width: 0.17 * size.width),
@@ -527,14 +528,14 @@ class _JobDescState extends State<JobDesc> {
                   ],
                 ),
                 SizedBox(height: 0.003 * size.height),
-                        Text(
-                          widget.location ?? "",
-                          style: TextStyle(
-                            color: darkgrey,
-                            fontFamily: "poppins",
-                            fontSize: sizefont,
-                          ),
-                        ),
+                Text(
+                  widget.location ?? "",
+                  style: TextStyle(
+                    color: darkgrey,
+                    fontFamily: "poppins",
+                    fontSize: sizefont,
+                  ),
+                ),
                 SizedBox(
                   height: size.width * 0.01,
                 ),
@@ -558,6 +559,24 @@ class _JobDescState extends State<JobDesc> {
                           color: Colors.black),
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: size.width * 0.01,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    final Uri website =
+                        Uri.parse(widget.link ?? "www.google.com");
+                    await launchUrl(website);
+                  },
+                  child: Text(
+                    widget.link ?? "www.google.com",
+                    style: TextStyle(
+                        fontFamily: 'poppins',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: textgreen),
+                  ),
                 ),
                 SizedBox(
                   height: size.width * 0.03,
