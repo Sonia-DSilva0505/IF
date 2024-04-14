@@ -397,9 +397,10 @@ class _JobDescState extends State<JobDesc> {
           body: Wrap(
             children: widget.requirements.map((e) {
               return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(left: 15, bottom: 8),
+                    margin: const EdgeInsets.only(left: 15, bottom: 8, top: 8),
                     height: 5.0,
                     width: 5.0,
                     decoration: const BoxDecoration(

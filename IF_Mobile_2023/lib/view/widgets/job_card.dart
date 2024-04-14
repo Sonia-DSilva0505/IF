@@ -294,7 +294,7 @@ class JobCard extends StatelessWidget {
                   const Spacer(),
                   InkWell(
                     child: const SizedBox(
-                        height: 18,
+                        height: 26,
                         child: Text(
                           'View details >',
                           style: TextStyle(

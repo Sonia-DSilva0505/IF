@@ -3,6 +3,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:internship_fair/constants/constants.dart';
@@ -244,14 +245,19 @@ class _ProfileState extends State<Profile> {
                                 color: const Color.fromARGB(255, 97, 132, 129),
                               ),
                             ),
-                            Text(
-                              email ?? "",
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: sizefont * 0.7,
-                                color: const Color.fromARGB(255, 97, 132, 129),
+                            Flexible(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  email ?? "",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: sizefont * 0.7,
+                                    color: const Color.fromARGB(255, 97, 132, 129),
+                                  ),
+                                  overflow: TextOverflow.fade,
+                                ),
                               ),
-                              overflow: TextOverflow.fade,
                             ),
                           ],
                         ),
@@ -322,12 +328,18 @@ class _ProfileState extends State<Profile> {
                                     borderRadius: BorderRadius.circular(5),
                                   ),
                                 ),
-                                child: Text(
-                                  "View Resume",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: sizefont * 0.7,
-                                    fontWeight: FontWeight.w500,
+                                child: Flexible(
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      "View Resume",
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: sizefont * 0.7,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color.fromARGB(255, 78, 132, 126),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -343,30 +355,35 @@ class _ProfileState extends State<Profile> {
                                   onPressed: () {
                                     selectPDF();
                                   },
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        WidgetSpan(
-                                          child: Icon(
-                                            Icons.file_upload_outlined,
-                                            color: Colors.white,
-                                            size: sizefont * 0.9,
-                                          ),
+                                  child: Flexible(
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text.rich(
+                                        TextSpan(
+                                          children: [
+                                            WidgetSpan(
+                                              child: Icon(
+                                                Icons.file_upload_outlined,
+                                                color: Colors.white,
+                                                size: sizefont * 0.9,
+                                              ),
+                                            ),
+                                            WidgetSpan(
+                                              child: SizedBox(
+                                                width: size.width * 0.01,
+                                              ),
+                                            ),
+                                            const TextSpan(
+                                              text: "Update",
+                                              style: TextStyle(
+                                                fontFamily: 'poppins',
+                                                fontSize: 14,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        WidgetSpan(
-                                          child: SizedBox(
-                                            width: size.width * 0.01,
-                                          ),
-                                        ),
-                                        const TextSpan(
-                                          text: "Update",
-                                          style: TextStyle(
-                                            fontFamily: 'poppins',
-                                            fontSize: 14,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -500,7 +517,7 @@ class _ProfileState extends State<Profile> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontFamily: 'poppins',
-                                  fontSize: sizefont,
+                                  fontSize: sizefont*0.7,
                                   color: whiteColor),
                             ),
                           )),
