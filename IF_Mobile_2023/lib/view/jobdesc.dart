@@ -566,7 +566,7 @@ class _JobDescState extends State<JobDesc> {
                 GestureDetector(
                   onTap: () async {
                     final Uri website =
-                        Uri.parse(widget.link ?? "www.google.com");
+                        Uri.parse("https://${widget.link ?? "www.google.com"}");
                     await launchUrl(website);
                   },
                   child: Text(
