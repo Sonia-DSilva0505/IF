@@ -76,7 +76,7 @@ class AuthController {
     }
   }
 
-  Future<String> updateResume(
+  Future<List<String>> updateResume(
     String userid,
     File pdf,
   ) async {
@@ -96,9 +96,9 @@ class AuthController {
     var responseBody = await res.stream.bytesToString();
     var response = jsonDecode(responseBody);
     if (res.statusCode == 200) {
-      return "Success";
+      return ["Success", response["new"]["resume"]];
     } else {
-      return response["message"];
+      return [response["message"]];
     }
   }
 
@@ -112,6 +112,7 @@ class AuthController {
       box.write('sapid', res['data']['sap']);
       box.write('contact', res['data']['contact']);
       box.write('department', res['data']['department']);
+      box.write('resume', res['data']['resume']);
     } catch (e) {
       log(e.toString());
     }
