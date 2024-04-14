@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:internship_fair/controller/auth.dart';
@@ -49,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
               MaterialPageRoute(builder: ((context) => const JobProfile())));
         } else {
           MotionToast.error(
-                  toastDuration: const Duration(milliseconds: 500),
+                  toastDuration: const Duration(milliseconds: 2000),
                   height: 65,
                   borderRadius: 10,
                   padding: EdgeInsets.zero,

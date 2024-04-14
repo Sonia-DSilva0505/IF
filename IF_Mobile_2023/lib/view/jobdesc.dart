@@ -1,9 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:internship_fair/constants/constants.dart';
 import 'package:internship_fair/controller/apply_job.dart';
 import 'package:intl/intl.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JobDesc extends StatefulWidget {
   final String? jobPosition,
@@ -15,6 +18,7 @@ class JobDesc extends StatefulWidget {
       logo,
       location,
       skills,
+      link,
       deadline;
   final List<String> requirements;
   final int? v;
@@ -24,6 +28,7 @@ class JobDesc extends StatefulWidget {
   const JobDesc(
       {Key? key,
       required this.jobid,
+      required this.link,
       required this.jobPosition,
       required this.companyName,
       required this.minStipend,
@@ -67,7 +72,7 @@ class _JobDescState extends State<JobDesc> {
 
       if (status == "Successfully applied for Job.") {
         MotionToast.success(
-          toastDuration: const Duration(milliseconds: 500),
+          toastDuration: const Duration(milliseconds: 2000),
           width: size.width * 0.7,
           height: 65,
           borderRadius: 10,
@@ -87,7 +92,7 @@ class _JobDescState extends State<JobDesc> {
         ).show(context);
       } else if (status == "Already applied for Job") {
         MotionToast(
-          toastDuration: const Duration(milliseconds: 500),
+          toastDuration: const Duration(milliseconds: 2000),
           primaryColor: darkgrey,
           width: size.width * 0.7,
           height: 65,
@@ -113,7 +118,7 @@ class _JobDescState extends State<JobDesc> {
         ).show(context);
       } else {
         MotionToast.error(
-          toastDuration: const Duration(milliseconds: 500),
+          toastDuration: const Duration(milliseconds: 2000),
           height: sizefont * 5,
           borderRadius: 10,
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
@@ -146,8 +151,7 @@ class _JobDescState extends State<JobDesc> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment:
-            MainAxisAlignment.spaceBetween, // Distribute children evenly
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -393,9 +397,10 @@ class _JobDescState extends State<JobDesc> {
           body: Wrap(
             children: widget.requirements.map((e) {
               return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(left: 15, bottom: 8),
+                    margin: const EdgeInsets.only(left: 15, bottom: 8, top: 8),
                     height: 5.0,
                     width: 5.0,
                     decoration: const BoxDecoration(
@@ -504,7 +509,6 @@ class _JobDescState extends State<JobDesc> {
                             fontSize: sizefont * 1.2,
                           ),
                         ),
-                        
                       ],
                     ),
                     //SizedBox(width: 0.17 * size.width),
@@ -525,14 +529,14 @@ class _JobDescState extends State<JobDesc> {
                   ],
                 ),
                 SizedBox(height: 0.003 * size.height),
-                        Text(
-                          widget.location ?? "",
-                          style: TextStyle(
-                            color: darkgrey,
-                            fontFamily: "poppins",
-                            fontSize: sizefont,
-                          ),
-                        ),
+                Text(
+                  widget.location ?? "",
+                  style: TextStyle(
+                    color: darkgrey,
+                    fontFamily: "poppins",
+                    fontSize: sizefont,
+                  ),
+                ),
                 SizedBox(
                   height: size.width * 0.01,
                 ),
@@ -556,6 +560,24 @@ class _JobDescState extends State<JobDesc> {
                           color: Colors.black),
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: size.width * 0.01,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    final Uri website =
+                        Uri.parse("https://${widget.link ?? "www.google.com"}");
+                    await launchUrl(website);
+                  },
+                  child: Text(
+                    widget.link ?? "www.google.com",
+                    style: TextStyle(
+                        fontFamily: 'poppins',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: textgreen),
+                  ),
                 ),
                 SizedBox(
                   height: size.width * 0.03,

@@ -99,7 +99,7 @@ class _JobProfileState extends State<JobProfile> {
         backgroundColor: Colors.grey[100],
         body: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 30),
               Center(
@@ -138,6 +138,7 @@ class _JobProfileState extends State<JobProfile> {
                                     jobid: _getJob[index].id,
                                     v: _getJob[index].v,
                                     deadline: _getJob[index].deadline,
+                                    link: _getJob[index].link,
                                   );
                                 },
                               )

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -119,7 +121,7 @@ class _InfoPageState extends State<InfoPage> {
             MaterialPageRoute(builder: ((context) => const JobProfile())));
       } else {
         MotionToast.error(
-                toastDuration: const Duration(milliseconds: 500),
+                toastDuration: const Duration(milliseconds: 2000),
                 height: 65,
                 borderRadius: 10,
                 // width: 400,
@@ -702,7 +704,7 @@ class _InfoPageState extends State<InfoPage> {
               onTap: () {
                 if (pdf == null) {
                   MotionToast.error(
-                      toastDuration: const Duration(milliseconds: 500),
+                      toastDuration: const Duration(milliseconds: 2000),
                       height: 65,
                       borderRadius: 10,
                       // width: 400,

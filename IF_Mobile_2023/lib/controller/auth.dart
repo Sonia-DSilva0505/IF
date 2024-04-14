@@ -23,7 +23,6 @@ class AuthController {
     }
 
     final response = jsonDecode(body);
-    print(response);
     init(response);
     return "Success";
   }
@@ -77,7 +76,7 @@ class AuthController {
     }
   }
 
-  Future<String> updateResume(
+  Future<List<String>> updateResume(
     String userid,
     File pdf,
   ) async {
@@ -97,9 +96,9 @@ class AuthController {
     var responseBody = await res.stream.bytesToString();
     var response = jsonDecode(responseBody);
     if (res.statusCode == 200) {
-      return "Success";
+      return ["Success", response["new"]["resume"]];
     } else {
-      return response["message"];
+      return [response["message"]];
     }
   }
 
